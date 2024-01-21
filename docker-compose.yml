@@ -4,6 +4,6 @@ services:
   app:
     container_name: hexlet-app
     command: npm test
-    build: .
-    volumes:
-      - ./app:/app
+    build:
+      context: .
+      dockerfile: Dockerfile.production
