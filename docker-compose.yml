@@ -7,3 +7,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.production
+
+  db:
+    container_name: hexlet-db
+    image: postgres:15.2
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
