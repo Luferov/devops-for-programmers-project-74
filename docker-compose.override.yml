@@ -15,10 +15,7 @@ services:
       - $PWD/services/caddy/Caddyfile:/etc/caddy/Caddyfile
 
   app:
-    extends:
-      file: docker-compose.yml
-      service: app
-    command: bash -c "sleep 3 && npm run dev"
+    command: bash -c "npm run dev"
     build:
       context: .
       dockerfile: Dockerfile

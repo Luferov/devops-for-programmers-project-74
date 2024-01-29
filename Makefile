@@ -1,10 +1,16 @@
-.PHONY=dev,test,push
+.PHONY=dev,test,push,init
 
-test:
-	docker compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
+init:	## Инициализация старта
+	cp ./app/.env.example ./app/.env
+	docker-compose run --rm app npm ci
 
-dev:
-	docker compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
+test:	## Запуск тестов
+	docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
 
-push:
-	docker-compose -f docker-compose.yml build app
+dev:	## Запуск проекта в Dev режиме
+	docker compose up --abort-on-container-exit --exit-code-from app
+
+TAG ?= latest
+push:	## Собираем и пушим образ
+	docker login
+	docker build -t luferov/services-app:$(TAG) --push -f Dockerfile.production .
