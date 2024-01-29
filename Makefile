@@ -5,8 +5,7 @@ init:	## Инициализация старта
 	docker-compose run --rm app npm ci
 
 test:	## Запуск тестов
-	docker-compose -f docker-compose.yml build app
-	docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
+	docker-compose -f docker-compose.yml up --build --abort-on-container-exit --exit-code-from app
 
 dev:	## Запуск проекта в Dev режиме
 	docker compose up --abort-on-container-exit --exit-code-from app
