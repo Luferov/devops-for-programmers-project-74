@@ -15,11 +15,11 @@ services:
     container_name: hexlet-db
     image: postgres:latest
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     healthcheck:
       interval: 10s
       retries: 10
-      test: "pg_isready -U postgres -d postgres"
+      test: "pg_isready -U ${DATABASE_USERNAME} -d ${DATABASE_NAME}"
       timeout: 2s
