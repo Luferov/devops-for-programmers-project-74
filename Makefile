@@ -1,7 +1,10 @@
 .PHONY=dev,test,push,init
 
+ENV ?= false
 init:	## Инициализация старта
+ifeq ($(ENV), true)
 	cp ./app/.env.example ./app/.env
+endif
 	docker-compose run --rm app npm ci
 
 test:	## Запуск тестов

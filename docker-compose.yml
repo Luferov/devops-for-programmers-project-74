@@ -21,5 +21,5 @@ services:
     healthcheck:
       interval: 10s
       retries: 10
-      test: "pg_isready -U ${DB_USER} -d ${DB_NAME}"
+      test: "pg_isready -U postgres -d postgres"
       timeout: 2s
