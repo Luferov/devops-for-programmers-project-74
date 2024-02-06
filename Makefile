@@ -10,6 +10,9 @@ endif
 	docker-compose run --rm app npm ci
 
 test:	## Запуск тестов
+ifeq ("$(wildcard ./.env)", "")
+	@cp .env.example .env
+endif
 	docker-compose -f docker-compose.yml up --build --abort-on-container-exit --exit-code-from app
 
 dev:	## Запуск проекта в Dev режиме
