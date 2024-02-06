@@ -1,9 +1,11 @@
 .PHONY=dev,test,push,init
 
-ENV ?= false
 init:	## Инициализация старта
-ifeq ($(ENV), true)
-	cp ./app/.env.example ./app/.env
+ifeq ("$(wildcard ./app/.env)", "")
+	@cp ./app/.env.example ./app/.env
+endif
+ifeq ("$(wildcard ./.env)", "")
+	@cp .env.example .env
 endif
 	docker-compose run --rm app npm ci
 

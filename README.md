@@ -12,6 +12,8 @@ You can find image [https://hub.docker.com/repository/docker/luferov/services-ap
 
 If you use `docker-compose.yml`
 
+Version: Docker Compose version v2.23.3
+
 ```yml
 version: "3"
 
